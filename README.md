@@ -1,6 +1,6 @@
-# FeedHenry Hello World MBaaS Server
+# FeedHenry Hello World MBaaS Server with Cron sample
 
-This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for building your APIs. 
+This is a blank 'hello world' FeedHenry MBaaS with cron job.
 
 # Group Hello World API
 
@@ -21,5 +21,5 @@ This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for bu
 + Response 200 (application/json)
     + Body
             {
-              "msg": "Hello world"
+              "msg": "Hello world\n0"
             }
