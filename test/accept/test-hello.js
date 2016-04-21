@@ -13,7 +13,7 @@ exports.it_should_test_hello_in_server_GET = function(finish){
     assert.ok(!err, 'Unexpected error: ', util.inspect(err));
     assert.equal(response.statusCode, 200, 'Unexpected statusCode: ', response.statusCode + ' - ' + util.inspect(body));
     var data = JSON.parse(body);
-    assert.equal(data.msg, 'Hello test-get');
+    assert.equal(data.msg, 'Hello test-get\n0');
     finish();
   });
 };
@@ -23,7 +23,7 @@ exports.it_should_test_hello_in_server_POST = function(finish){
     console.log('Body  == ', body);
     assert.ok(!err, 'Unexpected error: ', util.inspect(err));
     assert.equal(response.statusCode, 200, 'Unexpected statusCode: ', response.statusCode + ' - ' + util.inspect(body));
-    assert.equal(body.msg, 'Hello test-post');
+    assert.equal(body.msg, 'Hello test-post\n0');
     finish();
   });
 };
@@ -33,7 +33,7 @@ exports.it_should_test_hello_in_server_GET_no_params = function(finish){
     assert.ok(!err, 'Unexpected error: ', util.inspect(err));
     assert.equal(response.statusCode, 200, 'Unexpected statusCode: ', response.statusCode + ' - ' + util.inspect(body));
     var data = JSON.parse(body);
-    assert.equal(data.msg, 'Hello World');
+    assert.equal(data.msg, 'Hello World\n0');
     finish();
   });
 };
@@ -43,7 +43,7 @@ exports.it_should_test_hello_in_server_POST_no_params = function(finish){
     assert.ok(!err, 'Unexpected error: ', util.inspect(err));
     assert.equal(response.statusCode, 200, 'Unexpected statusCode: ', response.statusCode + ' - ' + util.inspect(body));
     var data = JSON.parse(body);
-    assert.equal(data.msg, 'Hello World');
+    assert.equal(data.msg, 'Hello World\n0');
     finish();
   });
 };

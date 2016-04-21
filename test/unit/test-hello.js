@@ -13,6 +13,7 @@ exports.tearDown = function(finish) {
 };
 
 exports.it_should_test_hello_GET = function(finish) {
+  this.timeout(70000);
 
   // Note we have no requires in hello.js to stub out.
   // For more information on using proxyquire, see: https://github.com/thlorenz/proxyquire
@@ -34,7 +35,7 @@ exports.it_should_test_hello_GET = function(finish) {
   var endCalled = false;
   var res = {
     json: function(data) {
-      assert.equal(data.msg, 'Hello test get');
+      assert.equal(data.msg, 'Hello test get\n1');
       endCalled = true;
       finish();
     },
@@ -42,9 +43,10 @@ exports.it_should_test_hello_GET = function(finish) {
   };
 
   // Invoke the /hello route, note the test finishes when the 'end' is called on our mock response above.
+      setTimeout(function(){
   hello(req, res, function next(err){
     assert.ok(!err, 'Unexpected error: ' + util.inspect(err));
-  });
+  });},60000);
 };
 
 
@@ -70,7 +72,7 @@ exports.it_should_test_hello_POST = function(finish) {
   var endCalled = false;
   var res = {
     json: function(data) {
-      assert.equal(data.msg, 'Hello test post');
+      assert.equal(data.msg, 'Hello test post\n0');
       endCalled = true;
       finish();
     },
@@ -102,7 +104,7 @@ exports.it_should_test_hello_GET_no_params = function(finish) {
   var endCalled = false;
   var res = {
     json: function(data) {
-      assert.equal(data.msg, 'Hello World');
+      assert.equal(data.msg, 'Hello World\n0');
       endCalled = true;
       finish();
     },
@@ -135,7 +137,7 @@ exports.it_should_test_hello_POST_no_params = function(finish) {
   var endCalled = false;
   var res = {
     json: function(data) {
-      assert.equal(data.msg, 'Hello World');
+      assert.equal(data.msg, 'Hello World\n0');
       endCalled = true;
       finish();
     },
